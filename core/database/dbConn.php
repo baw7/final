@@ -15,8 +15,9 @@ class dbConn
     public static function getConnection()
     {
         if (!self::$db) {
-            new dbConn();
+               new dbConn();
         }
         return self::$db;
     }
+}
 ?>
