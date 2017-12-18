@@ -44,10 +44,10 @@ class routes
         //registering new user
         $route = new route();
         $route->http_method = 'POST';
-        $route->action = 'register';
+        $route->action = 'signup';
         $route->page = 'accounts';
         $route->controller = 'accountsController';
-        $route->method = 'register';
+        $route->method = 'signup';
         $routes[] = $route;
       
         //GET METHOD index.php?page=accounts&action=all
