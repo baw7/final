@@ -15,7 +15,7 @@ public static function all()
     {
         self::getTemplate('signup');
     }
-public static function Register()
+public static function update()
 {
 $user = accounts::findUserbyUN($_REQUEST['email']);
     if ($user == FALSE) {
