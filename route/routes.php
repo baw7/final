@@ -30,18 +30,9 @@ class routes
         $route->controller = 'homepageController';
         $route->method = 'create';
         $routes[] = $route;
-       
+    
         //this is the index.php route for POST
-        //This is an examole of the post for new user
-        $route = new route();
-        $route->http_method = 'POST';
-        $route->action = 'newnew';
-        $route->page = 'accounts';
-        $route->controller = 'accountsController';
-        $route->method = 'newnew';
-        $routes[] = $route;
-      
-        //registering new user
+        //This is an example of the post for new user
         $route = new route();
         $route->http_method = 'POST';
         $route->action = 'signup';
@@ -49,7 +40,16 @@ class routes
         $route->controller = 'accountsController';
         $route->method = 'signup';
         $routes[] = $route;
-      
+     
+        //registering new user
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'register';
+        $route->page = 'accounts';
+        $route->controller = 'accountsController';
+        $route->method = 'register';
+        $routes[] = $route;
+       
         //GET METHOD index.php?page=accounts&action=all
         $route = new route();
         $route->http_method = 'GET';
@@ -77,7 +77,7 @@ class routes
         $route->controller = 'accountsController';
         $route->method = 'login';
         $routes[] = $route;
-       
+      
         //GET METHOD index.php?page=accounts&action=logout
         $route = new route();
         $route->http_method = 'POST';
@@ -86,7 +86,7 @@ class routes
         $route->controller = 'accountsController';
         $route->method = 'logout';
         $routes[] = $route;
-       
+      
         //GET METHOD index.php?page=accounts&action=myProf
         $route = new route();
         $route->http_method = 'POST';
@@ -95,7 +95,6 @@ class routes
         $route->controller = 'accountsController';
         $route->method = 'show_profile';
         $routes[] = $route;
-        
         //GET METHOD index.php?page=accounts&action=update
         $route = new route();
         $route->http_method = 'POST';
@@ -114,7 +113,7 @@ class routes
         $route->controller = 'tasksController';
         $route->method = 'show';
         $routes[] = $route;
-        
+       
         //This is an examole of the post for tasks to list tasks.  See the action matches the method name.
         //you need to add routes for create, edit, and delete
         //GET METHOD index.php?page=tasks&action=all
@@ -134,7 +133,7 @@ class routes
         $route->controller = 'tasksController';
         $route->method = 'allOneUser';
         $routes[] = $route;
-      
+     
         //YOU WILL NEED TO ADD MORE ROUTES
         $route = new route();
         $route->http_method = 'POST';
@@ -143,7 +142,7 @@ class routes
         $route->controller = 'tasksController';
         $route->method = 'delete';
         $routes[] = $route;
-    
+      
         //edit a task function
         $route = new route();
         $route->http_method = 'POST';
@@ -152,7 +151,6 @@ class routes
         $route->controller = 'tasksController';
         $route->method = 'editTask';
         $routes[] = $route;
-      
         //update tasks
         $route = new route();
         $route->http_method = 'POST';
@@ -161,7 +159,7 @@ class routes
         $route->controller = 'tasksController';
         $route->method = 'update';
         $routes[] = $route;
-     
+       
         //add tasks page
         $route = new route();
         $route->http_method = 'POST';
@@ -170,6 +168,7 @@ class routes
         $route->controller = 'tasksController';
         $route->method = 'create';
         $routes[] = $route;
+      
         //add tasks function
         $route = new route();
         $route->http_method = 'POST';
@@ -189,3 +188,4 @@ class route
     public $method;
     public $controller;
 }
+?>
