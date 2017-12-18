@@ -9,7 +9,7 @@
     echo $data['site_name'];
     ?> </h1>
 
-
+<center>
 <form action="index.php?page=accounts&action=login" method="POST">
 
     <div class="container">
