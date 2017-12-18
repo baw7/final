@@ -11,9 +11,9 @@ public static function all()
         $records = accounts::findAll();
         self::getTemplate('accountsall', $records);
     }
-    public static function signup()
+    public static function register()
     {
-        self::getTemplate('signup');
+        self::getTemplate('register');
     }
 public static function update()
 {
