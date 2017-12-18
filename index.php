@@ -11,6 +11,6 @@ include_once "autoload.php";
 include_once "database.php";
 
 //this starts the program as a static.  Start tracing the program from here following the classes and methods being called
-$response = http\processRequest::createResponse();
+$response = http\request::createResponse();
 
 ?>
