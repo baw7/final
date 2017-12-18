@@ -6,7 +6,7 @@ class accounts extends \database\collection
     public static  function findUserbyUN($login) {
         $tableName = get_called_class();
         $sql = 'SELECT * FROM ' .$tableName . ' WHERE email ="' . $login.'"';
-        $recordsSet = self::getResults($sql);
+        $recordsSet = self::getResults();
         if (is_null($recordsSet)) {
             echo "False";
             return FALSE;
