@@ -71,20 +71,20 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
     }
     public static function login()
     {
-        echo "Welcome!";
+        echo "Thanks for logging in!";
         $user = accounts::findUserbyEmail($_REQUEST['email']);
         print_r($user);
         if ($user == FALSE) {
             echo 'user not found';
         } else if($user->checkPassword($_POST['pass']) == TRUE) {
-                echo 'Please login!';
+                echo 'login';
                 session_start();
                 $_SESSION["userID"] = $user->id;
                 //forward the user to the show all todos page
                 print_r($_SESSION);
                 header("Location: index.php?page=tasks&action=alltasks&id=".$user->id);
             } else {
-                echo 'Wrong password!';
+                echo 'password does not match';
             }
         }
     public static function logout()
@@ -93,4 +93,3 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
         header('Location: index.php');
     }
 }
-?>
