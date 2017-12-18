@@ -13,7 +13,7 @@ public static function all()
     }
     public static function register()
     {
-        self::getTemplate('register');
+       self::getTemplate('register');
     }
 public static function update()
 {
