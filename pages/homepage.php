@@ -4,13 +4,11 @@
 <body>
 
 
-<h2>
+<h1><center>
     <?php
     echo $data['site_name'];
-    ?> </h2>
-<center>
-<h3><a href="index.php?page=accounts&action=all"> All Accounts</a></h3>
-<h3><a href="index.php?page=tasks&action=all"> All Tasks</a></h3>
+    ?> </h1>
+
 
 <form action="index.php?page=accounts&action=login" method="POST">
 
@@ -29,8 +27,11 @@
 
 
 </form>
-<h3><a href="index.php?page=accounts&action=signup">New? Register Here</a></h3>
+<h4><a href="index.php?page=accounts&action=signup">New? Register Here</a></h3>
 
+    
+<h4><a href="index.php?page=accounts&action=all"> All Accounts</a></h3>
+<h4><a href="index.php?page=tasks&action=all"> All Tasks</a></h3>
 
 </body>
 </html>
