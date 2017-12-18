@@ -13,7 +13,7 @@ public static function all()
     }
     public static function signup()
     {
-        self::getTemplate('User_SignUp');
+        self::getTemplate('signup');
     }
 public static function register()
 {
