@@ -1,6 +1,6 @@
 <?php
 namespace http;
-class processRequest
+class request
 {
     static public function getRequestMethod()
     {
