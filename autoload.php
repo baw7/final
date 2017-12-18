@@ -17,9 +17,9 @@ class Manage
             return;
         }
     }
-    public static function models($class)
+    public static function model($class)
     {
-    $path = 'models/' . str_replace('\\', '/', $class) . '.php';
+    $path = 'model/' . str_replace('\\', '/', $class) . '.php';
         if (is_file($path)) {
             include $path;
             return;
@@ -33,18 +33,18 @@ class Manage
             return;
         }
     }
-    public static function routes($class)
+    public static function route($class)
     {
-        $path = 'routes/' . str_replace('\\', '/', $class) . '.php';
+        $path = 'route/' . str_replace('\\', '/', $class) . '.php';
         if (is_file($path)) {
             include $path;
             return;
         }
     }
 }
-spl_autoload_register(array('Manage', 'routes'));
+spl_autoload_register(array('Manage', 'route'));
 spl_autoload_register(array('Manage', 'controllers'));
 spl_autoload_register(array('Manage', 'collections'));
-spl_autoload_register(array('Manage', 'models'));
+spl_autoload_register(array('Manage', 'model'));
 spl_autoload_register(array('Manage', 'core'));
 ?>
