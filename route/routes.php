@@ -35,10 +35,10 @@ class routes
         //This is an examole of the post for new user
         $route = new route();
         $route->http_method = 'POST';
-        $route->action = 'signup';
+        $route->action = 'newnew';
         $route->page = 'accounts';
         $route->controller = 'accountsController';
-        $route->method = 'signup';
+        $route->method = 'newnew';
         $routes[] = $route;
       
         //registering new user
