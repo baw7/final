@@ -9,7 +9,7 @@ class request
     }
     static public function getPage()
     {
-        $page = 'homepage';
+        $page = 'hpage';
         if (!empty($_GET['page'])) {
             $page = $_GET['page'];
         }
