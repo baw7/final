@@ -19,3 +19,4 @@ class dbConn
         }
         return self::$db;
     }
+?>
