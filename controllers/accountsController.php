@@ -9,7 +9,7 @@ class accountsController extends http\controller
 public static function all()
     {
         $records = accounts::findAll();
-        self::getTemplate('all_accounts', $records);
+        self::getTemplate('accountsall', $records);
     }
     public static function signup()
     {
