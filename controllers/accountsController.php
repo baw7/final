@@ -70,7 +70,6 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
             echo 'user not found!';
         } else {
             if($user->checkPassword($_POST['password']) == TRUE) {
-                echo 'logged in!';
                 session_start();
                 $_SESSION["userID"] = $user->id;
                 header("Location: index.php?page=alltasks&action=all");
