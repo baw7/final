@@ -5,7 +5,7 @@
 
 
 <?php
-print table\display::genarateTableFromMultiArray($data);
+print table\htmlTable::genarateTableFromMultiArray($data);
 ?>
 
 
