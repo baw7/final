@@ -22,7 +22,7 @@
 </form></ul>
 
          <?php
-print utility\display::genarateTableFromMultiArray($data);
+print utility\htmlTable::genarateTableFromMultiArray($data);
 ?>
 </html>
 </body>
