@@ -62,13 +62,4 @@ class tasksController extends http\controller
     }
 }
 
-
-     public static function gettodo()
-    {
-        session_start();
-        $id = $_SESSION["userID"];
-        $x = todos::searchTodo($id);
-        self::getTemplate('alltasks',$x);
-    }
-
 ?>
