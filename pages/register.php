@@ -3,10 +3,10 @@
 <html>
 <body>
 
-
-<form action="index.php?page=accounts&action=store" method="post">
-    First name: <input type="text" name="fname"><br>
-    Last name: <input type="text" name="lname"><br>
+<center>
+<form action="index.php?page=accounts&action=register" method="post">
+    First Name: <input type="text" name="fname"><br>
+    Last Name: <input type="text" name="lname"><br>
     Email: <input type="text" name="email"><br>
     Phone: <input type="text" name="phone"><br>
     Birthday: <input type="text" name="birthday"><br>
