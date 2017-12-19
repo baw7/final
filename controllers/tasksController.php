@@ -61,4 +61,14 @@ class tasksController extends http\controller
         header('Location: index.php?page=tasks&action=allOneUser&id='.$_SESSION["userID"]);
     }
 }
+
+
+     public static function gettodo()
+    {
+        session_start();
+        $id = $_SESSION["userID"];
+        $x = todos::searchTodo($id);
+        self::getTemplate('alltasks',$x);
+    }
+
 ?>
