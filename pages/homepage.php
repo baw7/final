@@ -19,7 +19,7 @@
         <input type="text" placeholder="Enter Username" name="email" required>
 <br>
         <label><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="pass" required>
+        <input type="password" placeholder="Enter Password" name="password" required>
         <br>
 
         <button type="submit">Login</button>
