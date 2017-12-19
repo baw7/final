@@ -63,25 +63,23 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
         header("Location: index.php?page=accounts&action=all");
     }
     public static function login()
-  {
-        echo "logged in!";
-        $user = accounts::findUserbyEmail($_REQUEST['email']);
-        print_r($user);
+   {
+        $user = accounts::findUserbyEmail($_REQUEST['uname']);
+   
         if ($user == FALSE) {
             echo 'user not found!';
         } else {
-                $currentuser = new account();
-            if($currentuser->checkPassword($_POST['password']) == TRUE) {
+            if($user->checkPassword($_POST['password']) == TRUE) {
                 session_start();
                 $_SESSION["userID"] = $user->id;
-                header("Location: index.php?page=alltasks&action=gettodo");
-                //forward the user to the show all todos page
-                print_r($_SESSION);
+                $_SESSION["email"]= $user->email;
+                self::getTemplate('alltasks', NULL);
             } else {
                 echo 'wrong password!';
             }
         }
-        }
+    }
+    
         
     public static function logout()
     {
