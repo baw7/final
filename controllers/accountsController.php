@@ -69,20 +69,17 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
         print_r($user);
         if ($user == FALSE) {
             echo 'user not found';
-        } else {
-			$password = table\registration::checkPassword($_POST['password'], $user['password']);
-			echo $password;
-			if($pw == TRUE) {
-                echo 'login';
+          $currentuser = new account();
+            if($currentuser->checkPassword($_POST['pwd'],$user["password"])) {
                 session_start();
-				$_SESSION["userID"] = $user['id'];
-				$_SESSION["FName"] =  $user['fname'];
-				header("Location: index.php?page=all_tasks&action=all");
+                $_SESSION["userID"] = $user["id"];
+                header("Location: index.php?page=tasks&action=getById");
             } else {
-                echo 'Wrong password!';
-               }
+                echo "wrong password!";
+                header('Refresh: .001; index.php?page=homepage&action=show');
+            }
         }
-	}
+    }
     public static function logout()
     {
         session_destroy();
