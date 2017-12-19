@@ -33,7 +33,7 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
         $record->phone = $_POST['phone'];
         $record->birthday = $_POST['birthday'];
         $record->gender = $_POST['gender'];
-        $record->password = $record->setPassword($_POST['password']);
+        $record->password = table\registration::setPassword($_POST['password']);
         $record->save();
         header('Location: index.php?page=accounts&action=all');
     }
@@ -71,20 +71,20 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
     }
     public static function login()
     {
-        echo "Thanks for logging in!";
+        echo "Welcome!";
         $user = accounts::findUserbyEmail($_REQUEST['email']);
         print_r($user);
         if ($user == FALSE) {
             echo 'user not found';
-        } else if($user->checkPassword($_POST['pass']) == TRUE) {
-                echo 'login';
+        } else if($user->checkPassword($_POST['password']) == TRUE) {
+                echo 'Please login!';
                 session_start();
                 $_SESSION["userID"] = $user->id;
                 //forward the user to the show all todos page
                 print_r($_SESSION);
                 header("Location: index.php?page=tasks&action=alltasks&id=".$user->id);
             } else {
-                echo 'password does not match';
+                echo 'Wrong password!';
             }
         }
     public static function logout()
@@ -93,3 +93,4 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
         header('Location: index.php');
     }
 }
+?>
