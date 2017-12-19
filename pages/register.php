@@ -12,7 +12,6 @@
     Phone: <input type="text" name="phone"><br>
     Birthday: <input type="text" name="birthday"><br>
     Gender:  <input type="radio" name="gender" value="male" checked> Male <input type="radio" name="gender" value="female"> Female<br>
-    Username: <input type="text" name="uname"><br>
     Password: <input type="password" name="password"><br>
     <input type="submit" value="Register Now">
 </form>
