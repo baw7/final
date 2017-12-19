@@ -64,24 +64,24 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
     }
     public static function login()
    {
-        $user = accounts::findUserbyEmail($_REQUEST['email']);
-   
-        if ($user == FALSE) {
-            echo 'user not found!';
-        } else {
-            $help = table\registration::checkPassword($_POST['password'], $user['password']);
-			echo $help;
-			if($help == TRUE) {
-                session_start();
-                $_SESSION["userID"] = $user->id;
-                $_SESSION["email"]= $user->email;
-                header("Location: index.php?page=alltasks&action=all");
+       $user =account::findUserbyEmail($_REQUEST['email']);
+            if ($user == FALSE) {
+                $error = 'user not found!';
+                self::getTemplate('error', $error);
             } else {
-                echo 'wrong password!';
+                $check = account::create();
+                $check->id = $user->id;
+                $check->password = $user->password;
+                if ($check->checkPassword($_POST['password']) == TRUE) {
+                    session_start();
+                    $_SESSION["userID"] = $check->id;
+                    header('Location: index.php?page=tasks&action=all');
+                } else {
+                    $error = 'wrong password!';
+                    self::getTemplate('error', $error);
+                }
             }
         }
-    }
-    
         
     public static function logout()
     {
