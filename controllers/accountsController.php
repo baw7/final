@@ -86,6 +86,7 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
             }
         }
 	}
+    }
 	
     public static function logout()
     {
