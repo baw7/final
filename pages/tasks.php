@@ -2,12 +2,13 @@
 session_start();
 print table\htmlTable::generateTableForOneTodo($data);
 ?>
+
 <html>
-<head>
-<style>
-body {
-}
-</style>
+
+  <head>
+
+    <style>
+    </style>
 </head>
 <body>
 <form action="index.php?page=tasks&action=edit&id=<?php echo $data->id; ?> " method="post" id="form1" style="float:left;">
