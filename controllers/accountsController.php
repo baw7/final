@@ -63,7 +63,9 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
         header("Location: index.php?page=accounts&action=all");
     }
     public static function login()
-      $user = accounts::findUserbyEmail($_REQUEST['email']);
+        echo "logged in!";
+        $user = accounts::findUserbyEmail($_REQUEST['email']);
+        print_r($user);
         if ($user == FALSE) {
             echo 'user not found!';
         } else {
