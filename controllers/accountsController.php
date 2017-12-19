@@ -68,13 +68,14 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
         $user = accounts::findUserbyEmail($_REQUEST['email']);
         print_r($user);
         if ($user == FALSE) {
-            echo 'user not found';
+            echo "user not found!";
           } else {
           $currentuser = new account();
             if($currentuser->checkPassword($_POST['password'],$user["password"])) {
-                session_start();
-                $_SESSION["userID"] = $user["id"];
-                header("Location: index.php?page=alltasks&action=all");
+               session_start();
+				$_SESSION["userID"] = $user['id'];
+				$_SESSION["FName"] =  $user['fname'];
+				header("Location: index.php?page=all_tasks&action=all");
             } else {
                 echo "wrong password!";
         }
