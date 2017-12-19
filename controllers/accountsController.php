@@ -64,30 +64,22 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
     }
     public static function login()
      {
+        echo "logged in!";
         $user = accounts::findUserbyEmail($_REQUEST['email']);
+        print_r($user);
         if ($user == FALSE) {
-			echo "user not found!";
-            
-        } else {
-	$currentuser = new account();
+            echo 'user not found';
+          } else {
+          $currentuser = new account();
             if($currentuser->checkPassword($_POST['password'],$user["password"])) {
                 session_start();
                 $_SESSION["userID"] = $user["id"];
-			if($currentuser == TRUE) {
-                echo 'login';
-                session_start();
-				$_SESSION["userID"] = $user['id'];
-				$_SESSION["FName"] =  $user['fname'];
-		header("Location: index.php?page=alltasks&action=all");
-			
+                header("Location: index.php?page=alltasks&action=all");
             } else {
-		 echo "wrong password!";
-                header("Location: index.php?page=userlogin&action=login&msg=Incorrect%20User%20Name%20or%20Password");
-            }
+                echo "wrong password!";
         }
-	}
     }
-	
+     }
     public static function logout()
     {
         session_destroy();
