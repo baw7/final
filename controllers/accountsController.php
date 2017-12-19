@@ -81,6 +81,7 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
 		header("Location: index.php?page=alltasks&action=all");
 			
             } else {
+		 echo "wrong password!";
                 header("Location: index.php?page=userlogin&action=login&msg=Incorrect%20User%20Name%20or%20Password");
             }
         }
