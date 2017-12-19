@@ -36,7 +36,7 @@ class routes
         $route = new route();
         $route->http_method = 'GET';
         $route->action = 'show';
-        $route->page = 'tasks';
+        $route->page = 'showtasks';
         $route->controller = 'tasksController';
         $route->method = 'show';
         $routes[] = $route;
