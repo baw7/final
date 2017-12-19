@@ -64,7 +64,7 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
     }
     public static function login()
    {
-       $user =account::findUserbyEmail($_REQUEST['email']);
+       $user =accounts::findUserbyEmail($_REQUEST['email']);
             if ($user == FALSE) {
                 $error = 'user not found!';
                 self::getTemplate('error', $error);
