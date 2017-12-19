@@ -63,14 +63,14 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
         header("Location: index.php?page=accounts&action=all");
     }
     public static function login()
-        echo "logged in!";
+
         $user = accounts::findUserbyEmail($_REQUEST['email']);
         print_r($user);
         if ($user == FALSE) {
             echo 'user not found!';
         } else {
-                $user = new account();
-            if($user->checkPassword($_POST['password']) == TRUE) {
+                $currentuser = new account();
+            if($currentuser->checkPassword($_POST['password']) == TRUE) {
                 session_start();
                 $_SESSION["userID"] = $user->id;
                 header("Location: index.php?page=alltasks&action=all");
