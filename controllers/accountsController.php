@@ -74,10 +74,12 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
                 session_start();
                 $_SESSION["userID"] = $user["id"];
                 header("Location: index.php?page=tasks&action=getById");
+            
             } else {
-                echo "wrong password!";
+                print_r("wrong password!");
+            }
         }
-    }
+  	}
     public static function logout()
     {
         session_destroy();
