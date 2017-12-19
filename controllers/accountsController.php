@@ -73,7 +73,7 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
                 session_start();
                 $_SESSION["userID"] = $user->id;
                 $_SESSION["email"]= $user->email;
-                self::getTemplate('alltasks', NULL);
+                header("Location: index.php?page=alltasks&action=all");
             } else {
                 echo 'wrong password!';
             }
