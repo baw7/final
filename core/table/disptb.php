@@ -1,6 +1,6 @@
 <?php
 namespace table;
-class tabletable{
+class disptb{
     public static function genarateTableFromMultiArray($array)
     {
         if(!empty($array)) {
