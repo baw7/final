@@ -4,26 +4,26 @@ class tasksController extends http\controller
     public static function show()
     {
         $record = todos::findOne($_REQUEST['id']);
-        self::getTemplate('show_task', $record);
+        self::getTemplate('show', $record);
     }
     public static function editTask()
     {
         $record = todos::findOne($_REQUEST['id']);
-        self::getTemplate('edit_task', $record);
+        self::getTemplate('edit', $record);
     }
     public static function all()
     {
         $records = todos::findAll();
-        self::getTemplate('all_tasks', $records);
+        self::getTemplate('tasks', $records);
     }
     public static function allOneUser()
     {
         $records = todos::findTasksbyID($_REQUEST['id']);
-        self::getTemplate('all_tasks', $records);
+        self::getTemplate('tasks', $records);
     }
     public static function create()
     {
-        self::getTemplate('new_task');
+        self::getTemplate('new');
     }
     public static function addTask()
     {
