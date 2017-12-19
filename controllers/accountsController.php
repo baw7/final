@@ -33,7 +33,6 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
         $record->phone = $_POST['phone'];
         $record->birthday = $_POST['birthday'];
         $record->gender = $_POST['gender'];
-         $record->uname = $_POST['uname'];
         $record->password = table\registration::setPassword($_POST['password']);
         $record->save();
         header('Location: index.php?page=accounts&action=all');
@@ -56,7 +55,6 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
         $user->phone = $_POST['phone'];
         $user->birthday = $_POST['birthday'];
         $user->gender = $_POST['gender'];
-         $record->uname = $_POST['uname'];
         $user->save();
         header("Location: index.php?page=tasks&action=alltasks&id=".$_REQUEST['id']);
     }
