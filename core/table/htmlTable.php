@@ -1,6 +1,6 @@
 <?php
 namespace table;
-class display{
+class htmlTable{
     public static function genarateTableFromMultiArray($array)
     {
         if(!empty($array)) {
