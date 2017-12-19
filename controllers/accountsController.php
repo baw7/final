@@ -11,12 +11,12 @@ class accountsController extends http\controller
         }
         $userID = $_SESSION['userID'];
         $record = accounts::findOne($userID);
-        self::getTemplate('show_account', $record);
+        self::getTemplate('show', $record);
     }
 public static function all()
     {
         $records = accounts::findAll();
-        self::getTemplate('all_accounts', $records);
+        self::getTemplate('accountsall', $records);
     }
     public static function register()
     {
@@ -33,6 +33,7 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
         $record->phone = $_POST['phone'];
         $record->birthday = $_POST['birthday'];
         $record->gender = $_POST['gender'];
+         $record->uname = $_POST['uname'];
         $record->password = table\registration::setPassword($_POST['password']);
         $record->save();
         header('Location: index.php?page=accounts&action=all');
@@ -44,7 +45,7 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
     public static function edit()
     {
         $record = accounts::findOne($_REQUEST['id']);
-        self::getTemplate('edit_account', $record);
+        self::getTemplate('edit', $record);
     }
     
     public static function save() {
@@ -55,6 +56,7 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
         $user->phone = $_POST['phone'];
         $user->birthday = $_POST['birthday'];
         $user->gender = $_POST['gender'];
+         $record->uname = $_POST['uname'];
         $user->save();
         header("Location: index.php?page=tasks&action=alltasks&id=".$_REQUEST['id']);
     }
@@ -62,7 +64,7 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
     {
         session_start();
         $record = accounts::findOne($_SESSION['userID']);
-        self::getTemplate('edit_account', $record);
+        self::getTemplate('edit', $record);
     }
    public static function delete() {
         $record = accounts::findOne($_REQUEST['id']);
@@ -71,13 +73,13 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
     }
     public static function login()
     {
-        echo "Welcome!";
+        echo "Thanks for logging in!";
         $user = accounts::findUserbyEmail($_REQUEST['email']);
         print_r($user);
         if ($user == FALSE) {
             echo 'user not found';
         } else if($user->checkPassword($_POST['password']) == TRUE) {
-                echo 'Please login!';
+                echo 'Log In Here';
                 session_start();
                 $_SESSION["userID"] = $user->id;
                 //forward the user to the show all todos page
