@@ -70,7 +70,7 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
         if ($user == FALSE) {
             echo 'user not found';
           $currentuser = new account();
-            if($currentuser->checkPassword($_POST['pwd'],$user["password"])) {
+            if($record->checkPassword($_POST['password']) == TRUE) {
                 session_start();
                 $_SESSION["userID"] = $user["id"];
                 header("Location: index.php?page=tasks&action=getById");
