@@ -14,12 +14,12 @@ class tasksController extends http\controller
     public static function all()
     {
         $records = todos::findAll();
-        self::getTemplate('showtask', $records);
+        self::getTemplate('alltasks', $records);
     }
     public static function allOneUser()
     {
         $records = todos::findTasksbyID($_REQUEST['id']);
-        self::getTemplate('showtask', $records);
+        self::getTemplate('alltasks', $records);
     }
     public static function create()
     {
