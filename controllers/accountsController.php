@@ -69,9 +69,11 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
 			echo "user not found!";
             
         } else {
-			$pass = table\registration::checkPassword($_POST['password'], $user['password']);
-			echo $pass;
-			if($pass == TRUE) {
+	$currentuser = new account();
+            if($currentuser->checkPassword($_POST['pwd'],$user["password"])) {
+                session_start();
+                $_SESSION["userID"] = $user["id"];
+			if($currentuser == TRUE) {
                 echo 'login';
                 session_start();
 				$_SESSION["userID"] = $user['id'];
