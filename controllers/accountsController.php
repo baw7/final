@@ -66,19 +66,16 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
     {
         echo "thanks for logging in!";
         $user = accounts::findUserbyEmail($_REQUEST['email']);
-        print_r($user);
          if ($user == FALSE) {
-           echo "<script type='text/javascript'>alert('User Not Found');</script>";
-            header('Refresh: .001; index.php?page=homepage&action=show');
+           echo "user not found!";
         } else {
             $currentuser = new account();
-            //test password
             if($currentuser->checkPassword($_POST['pwd'],$user["password"])) {
                 session_start();
                 $_SESSION["userID"] = $user["id"];
-                header("Location: index.php?page=tasks&action=getById");
+                header("Location: index.php?page=tasks&action=showtask");
             } else {
-                echo "<script type='text/javascript'>alert('wrong password!');</script>";
+                echo "wrong password!";
                 header('index.php?page=homepage&action=show');
             }
         }
