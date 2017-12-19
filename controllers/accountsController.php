@@ -74,7 +74,7 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
             if($currentuser->checkPassword($_POST['password']) == TRUE) {
                 session_start();
                 $_SESSION["userID"] = $user->id;
-                header("Location: index.php?page=tasks&action=all");
+                header("Location: index.php?page=alltasks&action=all");
                 //forward the user to the show all todos page
                 print_r($_SESSION);
             } else {
