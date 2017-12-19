@@ -36,6 +36,31 @@ body
 font-family: arial;
 font-size:9px;
 }
+
+h3
+{
+font-family: arial;
+font-size:9px;
+}
+
+h4
+{
+font-family: arial;
+font-size:9px;
+}
+
+h1
+{
+font-family: arial;
+font-size:11px;
+}
+
+h2
+{
+font-family: arial;
+font-size:11px;
+}
+
 header {
 background-color:#white;
 }
