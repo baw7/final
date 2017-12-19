@@ -63,27 +63,23 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
         header("Location: index.php?page=accounts&action=all");
     }
     public static function login()
-   {
+    {
+        echo "logged in!";
         $user = accounts::findUserbyEmail($_REQUEST['email']);
+        print_r($user);
         if ($user == FALSE) {
-			header("Location: index.php?page=userlogin&action=login&msg=Incorrect%20User%20Name%20or%20Password");
-            
-        } else {
-			$pass = table\registration::checkPassword($_POST['password'], $user['password']);
-			echo $pass;
-			if($pass == TRUE) {
-                echo 'login!';
+            echo 'user not found';
+          } else {
+          $currentuser = new account();
+            if($currentuser->checkPassword($_POST['password'],$user["password"])) {
                 session_start();
-				$_SESSION["userID"] = $user['id'];
-				$_SESSION["FName"] =  $user['fname'];
-				header("Location: index.php?page=all_tasks&action=all");
-                //forward the user to the show all todos page
-			
+                $_SESSION["userID"] = $user["id"];
+                header("Location: index.php?page=tasks&action=all");
             } else {
-                header("Location: index.php?page=userlogin&action=login&msg=Incorrect%20User%20Name%20or%20Password");
-            }
+                echo "wrong password!";
         }
-	}
+    }
+     }
     public static function logout()
     {
         session_destroy();
