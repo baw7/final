@@ -3,33 +3,6 @@ nav {
 	 margin-top:25px;
 	float:left;
 } 
-li {
-    display: inline;
-    margin-left: 50px;
-	
-}
-.jumbotron {
-	background-image:url('http://www.designlovefest.com/wp-content/uploads/downloads/2015/01/DLFxWW_31.jpg');
-		background-size: cover;	
-}
-.jumbotron .title {
-	color:#white;
-	font-weight:bold;
-	font-size:4em;
-	}
-.jumbotron .subtitle {
-	color:#green;
-	font-size:2em;
-	}
-.photocredit {
-	color:yellow;
-	font-size:0.75em;
-	}
-
-.message {
-    color: #black;
-	font-weight: bold;
-}
 
 body
 {
@@ -68,9 +41,7 @@ background-color:#white;
 header .row {
 padding: 10px 25px 25px 10px;
 font-weight:bold;
-font-size:11px;
 }
-/* Table Styles */
 
 td, th {	padding: 6px; }
 
@@ -83,7 +54,6 @@ tr:nth-child(odd) {
     background-color: #white;
 }
 
-/*Buttons*/
 button.edit {
     padding: 6px 12px 6px 12px;
     background-color: grey;
