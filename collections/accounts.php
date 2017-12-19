@@ -3,18 +3,15 @@ class accounts extends \database\collection
 {
     protected static $modelName = 'account';
   
-    public static  function findUserbyUN($login) {
+    public static  function findUserbyEmail($email) {
         $tableName = get_called_class();
-        $sql = 'SELECT * FROM ' .$tableName . ' WHERE email ="' . $login.'"';
-        $recordsSet = self::getResults($sql);
+        $sql = 'SELECT * FROM ' .$tableName . ' WHERE email = ?';
+        $recordsSet = self::getResults($sql, $email);
         if (is_null($recordsSet)) {
-            echo "False";
             return FALSE;
         } else {
-            echo "True";
             return $recordsSet[0];
         }
       
     }
 }
-?>
