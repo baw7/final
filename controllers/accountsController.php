@@ -70,7 +70,7 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
             
         } else {
 	$currentuser = new account();
-            if($currentuser->checkPassword($_POST['pwd'],$user["password"])) {
+            if($currentuser->checkPassword($_POST['password'],$user["password"])) {
                 session_start();
                 $_SESSION["userID"] = $user["id"];
 			if($currentuser == TRUE) {
