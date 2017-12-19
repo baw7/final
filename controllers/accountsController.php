@@ -64,7 +64,7 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
     }
     public static function login()
    {
-        $user = accounts::findUserbyEmail($_REQUEST['uname']);
+        $user = accounts::findUserbyEmail($_REQUEST['email']);
    
         if ($user == FALSE) {
             echo 'user not found!';
