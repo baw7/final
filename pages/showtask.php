@@ -1,7 +1,5 @@
 <?php
 session_start();
-?>
-<?php
 print table\disptb::generateTableForOneTodo($data);
 ?>
 <html>
