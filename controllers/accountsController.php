@@ -69,10 +69,8 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
                 $error = 'user not found!';
                 self::getTemplate('error', $error);
             } else {
-                $check = account::create();
-                $check->id = $user->id;
-                $check->password = $user->password;
-                if ($check->checkPassword($_POST['password']) == TRUE) {
+              $currentuser = new account();
+            if($currentuser->checkPassword($_POST['password'],$user["password"])) {
                     session_start();
                     $_SESSION["userID"] = $check->id;
                     header('Location: index.php?page=tasks&action=all');
