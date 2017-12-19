@@ -3,50 +3,43 @@ class accountsController extends http\controller
 {
     public static function show()
     {
-        session_start();
-        if(key_exists('userID',$_SESSION)) {
-            $userID = $_SESSION['userID'];
-        } else {
-            echo 'Log in to view tasks!';
-        }
-        $userID = $_SESSION['userID'];
-        $record = accounts::findOne($userID);
+        $record = accounts::findOne($_REQUEST['id']);
         self::getTemplate('show', $record);
     }
-public static function all()
+    public static function all()
     {
         $records = accounts::findAll();
         self::getTemplate('accountsall', $records);
     }
-    public static function register()
+      public static function register()
     {
-        self::getTemplate('register');
+         self::getTemplate('register');
     }
-public static function store()
-{
-$user = accounts::findUserbyEmail($_REQUEST['email']);
-    if ($user == FALSE) {
-        $record = new account();
-        $record->email = $_POST['email'];
-        $record->fname = $_POST['fname'];
-        $record->lname = $_POST['lname'];
-        $record->phone = $_POST['phone'];
-        $record->birthday = $_POST['birthday'];
-        $record->gender = $_POST['gender'];
-        $record->password = table\registration::setPassword($_POST['password']);
-        $record->save();
-        header('Location: index.php?page=accounts&action=all');
+    //this is the function to save the user the new user for registration
+    public static function store()
+    {
+        $user = accounts::findUserbyEmail($_REQUEST['email']);
+        if ($user == FALSE) {
+            $user = new account();
+            $user->email = $_POST['email'];
+            $user->fname = $_POST['fname'];
+            $user->lname = $_POST['lname'];
+            $user->phone = $_POST['phone'];
+            $user->birthday = $_POST['birthday'];
+            $user->gender = $_POST['gender'];
+            $user->password = account::setPassword($_POST['password']);
+            $user->save();
+             header("Location: index.php?page=accounts&action=all");
+        } else {
+            $error = 'already registered';
+            self::getTemplate('error', $error);
+        }
     }
-    else{
-        echo 'Email has already been used.';
-    }
-}
     public static function edit()
     {
         $record = accounts::findOne($_REQUEST['id']);
         self::getTemplate('edit', $record);
     }
-    
     public static function save() {
         $user = accounts::findOne($_REQUEST['id']);
         $user->email = $_POST['email'];
@@ -56,41 +49,50 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
         $user->birthday = $_POST['birthday'];
         $user->gender = $_POST['gender'];
         $user->save();
-        header("Location: index.php?page=tasks&action=alltasks&id=".$_REQUEST['id']);
+        header("Location: index.php?page=accounts&action=all");
     }
-    public static function editprofile()
-    {
-        session_start();
-        $record = accounts::findOne($_SESSION['userID']);
-        self::getTemplate('edit', $record);
-    }
-   public static function delete() {
+    public static function delete() {
         $record = accounts::findOne($_REQUEST['id']);
         $record->delete();
         header("Location: index.php?page=accounts&action=all");
     }
-    public static function login()
+     public static function login()
     {
-        echo "Thanks for logging in!";
         $user = accounts::findUserbyEmail($_REQUEST['email']);
-        print_r($user);
         if ($user == FALSE) {
             echo 'user not found';
-        } else if($user->checkPassword($_POST['password']) == TRUE) {
-                echo 'Log In Here';
+        } else {
+            if($user->checkPassword($_POST['password']) == TRUE) {
+                echo 'login';
                 session_start();
                 $_SESSION["userID"] = $user->id;
-                //forward the user to the show all todos page
-                print_r($_SESSION);
-                header("Location: index.php?page=tasks&action=alltasks&id=".$user->id);
+                header("Location: index.php?page=tasks&action=fetchTodo");
+                    print_r($_SESSION);
             } else {
-                echo 'Wrong password!';
+                echo 'password does not match';
             }
         }
-    public static function logout()
-    {
-        session_destroy();
-        header('Location: index.php');
-    }
+        }
+        
+     public static function logout()
+     {
+          session_start();
+          session_destroy();
+          header("Location: index.php?page=homepage&action=show");
+          exit();
+     }
+     
+       public static function profile()
+          {
+     
+                 if (session_status()==PHP_SESSION_NONE)
+                 {
+                   session_start();
+                     
+                 }
+                 $record = accounts::findOne($_SESSION['userID']);
+                 self::getTemplate('show_account', $record);
+     
+              }
+     
 }
-?>
