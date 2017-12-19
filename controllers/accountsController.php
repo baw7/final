@@ -76,8 +76,6 @@ $user = accounts::findUserbyEmail($_REQUEST['email']);
                 header("Location: index.php?page=tasks&action=getById");
             } else {
                 echo "wrong password!";
-                header('Refresh: .001; index.php?page=homepage&action=show');
-            }
         }
     }
     public static function logout()
