@@ -1,5 +1,6 @@
 <!doctype html>
 <head>
+	<style>
   nav { 
 	 margin-top:25px;
 	float:left;
@@ -82,6 +83,7 @@ div#field {
 #updateForm input {
     margin-bottom: 18px;
 }
+	</style>
 </head>
 <html>
 <body>
