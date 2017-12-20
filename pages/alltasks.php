@@ -87,6 +87,7 @@ div#field {
 }
 	</style>
 </head>
+	<body>
 <?php
 print table\disptb::genarateTableFromMultiArray($data);
 ?>
